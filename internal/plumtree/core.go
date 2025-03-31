@@ -74,10 +74,10 @@ func (s *Server) Hand(msg []byte, conn net.Conn) {
 			switch msgAction {
 			case NodeJoin:
 				s.Member.AddMember(ipByte, NodeSurvival)
-
+				sourceIp := tool.ByteToIPv4Port(ipByte)
 				if !bytes.Equal(ipByte, s.Config.IPBytes()) {
 					s.eagerLock.Lock()
-					s.EagerPush = append(s.EagerPush, parentIP)
+					s.EagerPush = append(s.EagerPush, sourceIp)
 					s.eagerLock.Unlock()
 				}
 

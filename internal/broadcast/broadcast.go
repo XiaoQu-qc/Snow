@@ -1,7 +1,6 @@
 package broadcast
 
 import (
-	"fmt"
 	"math/rand"
 	. "snow/common"
 	"snow/tool"
@@ -87,7 +86,6 @@ func (s *Server) KRandomNodes(k int) []string {
 	ip := make([]string, 0)
 	//当前节点的ID，需要被排除
 	idx := s.Member.Find(s.Config.IPBytes())
-	fmt.Println("memberlen", s.Member.MemberLen())
 	randomNodes := tool.KRandomNodes(0, s.Member.MemberLen()-1, []int{idx}, k)
 	for _, v := range randomNodes {
 		ip = append(ip, tool.ByteToIPv4Port(s.Member.IPTable[v]))
