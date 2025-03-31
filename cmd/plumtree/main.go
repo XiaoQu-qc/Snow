@@ -32,7 +32,7 @@ func main() {
 	go func() {
 		for i := 0; i < 50000000000000; i++ {
 			time.Sleep(5 * time.Second)
-			serverList[0].PlumTreeBroadcast([]byte("hello from server!"), 0)
+			serverList[0].PlumTreeBroadcast([]byte("hello from server"), 0)
 		}
 	}()
 

@@ -145,7 +145,7 @@ func (s *Server) PlumTreeBroadcast(msg []byte, msgAction MsgAction) {
 	copy(bytes[TagLen+TimeLen+IpLen:], msg)
 
 	//用随机数当做消息id 发送之前进行缓存
-	msgId := msg[TagLen+IpLen : TagLen+IpLen+TimeLen]
+	msgId := bytes[TagLen+IpLen : TagLen+IpLen+TimeLen]
 	s.msgCache.Add(msgId, string(msg), s.Config.ExpirationTime)
 	s.PlumTreeMessage(bytes)
 }
