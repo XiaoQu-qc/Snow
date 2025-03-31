@@ -152,6 +152,7 @@ func (s *Server) PlumTreeBroadcast(msg []byte, msgAction MsgAction) {
 func (s *Server) PlumTreeMessage(msg []byte) {
 	if !s.isInitialized.Load() {
 		//如果树还没初始化过就先进行初始化，初始化的f个节点直接使用扇出来做
+
 		nodes := s.Server.KRandomNodes(s.Server.Config.FanOut)
 		s.eagerLock.Lock()
 		s.EagerPush = nodes
